@@ -17,15 +17,15 @@ disagree_weight = 0.9
 ema_mode = False 
 ema_momentum = 0.9
 val_interval = 25 
-early_stop_tolerance = 10
+early_stop_tolerance = 6
 max_step = 100000   
 
 device_idx = 0
-experiment_home = './experiment/uit-vsfc'
+experiment_home = './experiment/uit-vsfc_no_augmetation'
 dataset = 'uit-vsfc'   # 'ag_news', 'yahoo', 'imdb', 'empatheticdialogues', 'threecrises', 'goemotions'
 
 # JointMatch
-num_runs = 5
+num_runs = 1
 num_nets = 2
 cross_labeling = True
 adaptive_threshold = True

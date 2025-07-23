@@ -1,1 +1,9 @@
 code/experiment/
+data/ag_news/
+data/custom_dataset/
+data/imdb/
+data/yahoo/
+data/empatheticdialogues/
+data/hurricane/
+data/goemotions/
+data/threecrises
