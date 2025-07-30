@@ -1,76 +1,100 @@
-# JointMatch: A Unified Approach for Diverse and Collaborative Pseudo-Labeling to Semi-Supervised Text Classification
+# JointMatch: Một phương pháp hợp nhất cho Pseudo-Labeling đa dạng và cộng tác trong phân loại văn bản bán giám sát
 
-![Task](code/images/pipeline.jpg)
+![Pipeline](code/images/pipeline.jpg)
 
-This repository contains the implementation of the paper:
-> **JointMatch: A Unified Approach for Diverse and Collaborative Pseudo-Labeling to Semi-Supervised Text Classification** 
-> [[Paper]](https://aclanthology.org/2023.emnlp-main.451.pdf) [[ACL Anthology]](https://aclanthology.org/2023.emnlp-main.451/) [[OpenReview]](https://openreview.net/forum?id=ZAHyZ3CBds) [[arXiv]](https://arxiv.org/abs/2310.14583) <br>
-> Conference on Empirical Methods in Natural Language Processing (EMNLP), 2023 <br>
-> Henry Peng Zou, Cornelia Caragea <br>
+Repository này chứa mã nguồn của paper:
+> **JointMatch: A Unified Approach for Diverse and Collaborative Pseudo-Labeling to Semi-Supervised Text Classification**  
+> [[Paper]](https://aclanthology.org/2023.emnlp-main.451.pdf) [[ACL Anthology]](https://aclanthology.org/2023.emnlp-main.451/) [[OpenReview]](https://openreview.net/forum?id=ZAHyZ3CBds) [[arXiv]](https://arxiv.org/abs/2310.14583)  
+> EMNLP 2023  
+> Henry Peng Zou, Cornelia Caragea
 
-## News
+---
 
-🌱 Welcome to check out our other work on semi-supervised learning and pseudo-label debiasing: [DeCrisisMB](https://github.com/HenryPengZou/DeCrisisMB)!
+## Cập nhật
 
+- Đã bổ sung hướng dẫn sử dụng bộ dữ liệu tiếng Việt uit-vsfc.
 
-## Setup
-### Install Package 
+---
+
+## Cài đặt
+
+### 1. Tạo môi trường và cài đặt phụ thuộc
+
 ```bash
 conda create -n jointmatch python=3.8 -y
 conda activate jointmatch
 
-# install pytorch
+# Cài đặt pytorch
 conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 -c pytorch
 
-# install dependency
+# Cài đặt các thư viện phụ thuộc khác
 pip install -r requirements.txt
 ```
-### Data Preparation
-The file structure should look like:
 
-```bash
+---
+
+### 2. Chuẩn bị dữ liệu
+
+**Cấu trúc thư mục:**
+```
 code/
   |-- criterions
   |-- models
   |-- utils
   |-- main.py
   |-- panel_main.py 
-  ......
+  ...
 data/
-  |-- ag_news
-  |-- imdb
-  |-- yahoo
-    |-- train.csv
-    |-- val.csv
-    |-- test.csv
-    ......
+  |-- uit-vsfc/
+      |-- train.csv
+      |-- dev.csv
+      |-- test.csv
+      |-- preprocess.ipynb
+  |-- uit-vsfc-no-augmentation/
+      |-- train.csv
+      |-- dev.csv
+      |-- test.csv
+      |-- preprocess.ipynb
 ```
 
-## Reproduce Paper Results
+**Mô tả bộ dữ liệu:**
+- Bộ dữ liệu [uit-vsfc](https://huggingface.co/datasets/uit-nlp/uit-vsfc) là bộ dữ liệu phân loại cảm xúc tiếng Việt, gồm các file `train.csv`, `dev.csv`, `test.csv`.
+- Bạn có thể sử dụng thêm bộ `uit-vsfc-no-augmentation` nếu muốn thử nghiệm không dùng tăng cường dữ liệu.
 
-To reproduce our main paper results, simply run: 
+---
+
+### 3. Chạy huấn luyện và đánh giá
+
+**Chạy mô hình trên uit-vsfc:**
 ```bash
-python panel_main.py
+cd code
+python panel_main.py --dataset uit-vsfc
 ```
-    
-Specify the dataset, output location if you need, e.g., dataset = 'ag_news' and experiment_home = './experiment'. 
+- Tham số `--dataset` có thể thay đổi thành `uit-vsfc-no-augmentation` nếu muốn.
 
-To reproduce results with varying number of labeled data, simply run:
+**Chạy thử nghiệm với số lượng nhãn khác nhau:**
 ```bash
-python panel_num_labels.py
+python panel_num_labels.py --dataset uit-vsfc
 ```
 
-## Custom Dataset
+---
 
-To customize your own datasets (generate weak and strong data augmentations), please follow the demo [`preprocess.ipynb`](https://github.com/HenryPengZou/JointMatch/blob/main/data/custom_dataset/preprocess.ipynb) in the [custom_dataset](https://github.com/HenryPengZou/JointMatch/tree/main/data/custom_dataset) folder.
+## Tùy chỉnh dữ liệu
 
-## Bugs or Questions
+Nếu bạn muốn sử dụng bộ dữ liệu riêng hoặc tạo augmentations, hãy tham khảo notebook `preprocess.ipynb` trong thư mục dữ liệu tương ứng.
 
-If you have any questions related to the code or the paper, feel free to email Henry Peng Zou (pzou3@uic.edu). If you encounter any problems when using the code, or want to report a bug, you can open an issue. Please try to specify the problem with details so we can help you better and quicker!
+---
 
+## Báo lỗi & Hỏi đáp
 
-## Citation
-If you find this repository helpful, please consider citing our paper 💕: 
+Nếu có thắc mắc hoặc phát hiện lỗi, vui lòng mở issue hoặc liên hệ qua email.
+
+---
+
+## Trích dẫn
+
+Nếu bạn thấy repo hữu ích, hãy trích dẫn paper gốc:
+
 ```bibtex
 @inproceedings{zou2023jointmatch,
     title={JointMatch: A Unified Approach for Diverse and Collaborative Pseudo-Labeling to Semi-Supervised Text Classification},
@@ -79,16 +103,12 @@ If you find this repository helpful, please consider citing our paper 💕:
     pages={7290--7301},
     year={2023}
 }
-
-@inproceedings{zou2023decrisismb,
-    title={DeCrisisMB: Debiased Semi-Supervised Learning for Crisis Tweet Classification via Memory Bank},
-    author={Zou, Henry and Zhou, Yue and Zhang, Weizhi and Caragea, Cornelia},
-    booktitle={Findings of the Association for Computational Linguistics: EMNLP 2023},
-    pages={6104--6115},
-    year={2023}
-}
 ```
 
+---
+
 ## Acknowledgement
-This repo borrows some data and codes from [SAT](https://github.com/declare-lab/SAT) and [USB](https://github.com/microsoft/Semi-supervised-learning). We appreciate their great works. <br>
-Besides, welcome to check out our other work on semi-supervised learning: [DeCrisisMB](https://github.com/HenryPengZou/DeCrisisMB)!
+
+Repo này tham khảo dữ liệu và mã nguồn từ [SAT](https://github.com/declare-lab/SAT) và [USB](https://github.com/microsoft/Semi-supervised-learning).
+
+---
