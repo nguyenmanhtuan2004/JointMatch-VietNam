@@ -9,3 +9,7 @@ torch==1.12.1
 torchmetrics==0.10.0
 transformers==4.22.2
 tweet_preprocessor==0.6.0
+preprocessor==1.1.0
+pyvi==0.1.0
+
+
