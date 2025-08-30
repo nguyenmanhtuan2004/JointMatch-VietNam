@@ -191,3 +191,6 @@ data/threecrises/
 *.pkl
 *.h5
 *.safetensors
+
+# Vietnamese WordNet CSV files (raw data)
+vi-wordnet/*.csv

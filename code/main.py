@@ -421,7 +421,7 @@ def oneRun(log_dir, output_dir_experiment, **params):
 
     ## Quantatitive Results
     # Save training statistics
-    pd.set_option('precision', 4)
+    pd.set_option('display.precision', 4)
     df_stats= pd.DataFrame(training_stats)
     df_stats = df_stats.set_index('step')
     training_stats_path = log_dir + 'training_statistics.csv'   
