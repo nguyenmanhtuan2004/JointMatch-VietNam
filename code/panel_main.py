@@ -30,6 +30,7 @@ num_nets = 2
 cross_labeling = True
 adaptive_threshold = True
 weight_disagreement = 'True'
+seeds_list = [42]  # Fixed seed để reproducible
 
 multiRun(device_idx=device_idx, experiment_home=experiment_home, dataset=dataset, num_runs=num_runs,
         n_labeled_per_class=n_labeled_per_class, bs=bs, ul_ratio=ul_ratio, lr=lr,
@@ -37,7 +38,7 @@ multiRun(device_idx=device_idx, experiment_home=experiment_home, dataset=dataset
         num_nets=num_nets, cross_labeling=cross_labeling, 
         weight_disagreement=weight_disagreement, disagree_weight=disagree_weight,
         ema_mode=ema_mode, ema_momentum=ema_momentum,
-        val_interval=val_interval, early_stop_tolerance=early_stop_tolerance, max_step=max_step)
+        val_interval=val_interval, early_stop_tolerance=early_stop_tolerance, max_step=max_step, seeds_list=seeds_list)
 
 
 

@@ -87,11 +87,11 @@ def show_single_dataset(result):
 def show_multiple_datasets(results):
     """Hiển thị bảng so sánh nhiều dataset"""
     print(f"🏆 SO SÁNH KẾT QUẢ {len(results)} DATASETS")
-    print("="*80)
+    print("="*85)
     
-    # Header bảng
-    header = f"| {'Dataset':<12} | {'Test ACC':<9} | {'Test F1':<8} | {'Val ACC':<8} | {'Val F1':<7} | {'Train ACC':<9} | {'Train F1':<8} |"
-    separator = "+" + "-"*(len(header)-2) + "+"
+    # Header bảng với kích thước cột đồng nhất
+    header = f"| {'Dataset':<20} | {'Test ACC':<8} | {'Test F1':<7} | {'Val ACC':<7} | {'Val F1':<6} | {'Train ACC':<9} | {'Train F1':<8} |"
+    separator = "+" + "-"*20 + "+" + "-"*10 + "+" + "-"*9 + "+" + "-"*9 + "+" + "-"*8 + "+" + "-"*11 + "+" + "-"*10 + "+"
     
     print(separator)
     print(header)
@@ -99,11 +99,11 @@ def show_multiple_datasets(results):
     
     # Dữ liệu từng dataset
     for result in results:
-        row = (f"| {result['dataset']:<12} | "
-               f"{result['test_acc']:<9.4f} | "
-               f"{result['test_f1']:<8.4f} | "
-               f"{result['val_acc']:<8.4f} | "
-               f"{result['val_f1']:<7.4f} | "
+        row = (f"| {result['dataset']:<20} | "
+               f"{result['test_acc']:<8.4f} | "
+               f"{result['test_f1']:<7.4f} | "
+               f"{result['val_acc']:<7.4f} | "
+               f"{result['val_f1']:<6.4f} | "
                f"{result['train_acc']:<9.4f} | "
                f"{result['train_f1']:<8.4f} |")
         print(row)
