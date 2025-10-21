@@ -63,33 +63,6 @@ data/
 
 ---
 
-### 3. Chạy huấn luyện và đánh giá
-
-**Chạy mô hình trên uit-vsfc:**
-```bash
-cd code
-python panel_main.py --dataset uit-vsfc
-```
-- Tham số `--dataset` có thể thay đổi thành `uit-vsfc-no-augmentation` nếu muốn.
-
-**Chạy thử nghiệm với số lượng nhãn khác nhau:**
-```bash
-python panel_num_labels.py --dataset uit-vsfc
-```
-
----
-
-## Tùy chỉnh dữ liệu
-
-Nếu bạn muốn sử dụng bộ dữ liệu riêng hoặc tạo augmentations, hãy tham khảo notebook `preprocess.ipynb` trong thư mục dữ liệu tương ứng.
-
----
-
-## Báo lỗi & Hỏi đáp
-
-Nếu có thắc mắc hoặc phát hiện lỗi, vui lòng mở issue hoặc liên hệ qua email.
-
----
 
 ## Trích dẫn
 
